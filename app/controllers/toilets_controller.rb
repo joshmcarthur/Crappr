@@ -3,7 +3,7 @@ class ToiletsController < ApplicationController
   before_filter :load_toilet, :except => [:index]
   
   def index
-    @toilets = Toilet.all
+    @toilets = Toilet.all.limit(params[:limit] || nil)
     respond_to do |format|
       format.mobile { render :template => 'toilets/mobile/index' }
       format.json { render :json => @toilets.as_json }

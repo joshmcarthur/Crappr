@@ -75,7 +75,7 @@ function loadTop10(){
 function loadIndex(){
 	$("#index").show();
 	$('.page-header h2').html('All Toilets:');
-	$.getJSON('/api/toilets.json?limit=10', function(data) {
+	$.getJSON('/toilets.json?limit=10', function(data) {
 		items = [];
 		$.each(data, function(key, val) {
 	    items.push(	'<li id="' + key + '" class="listview-container">' + 
