@@ -6,6 +6,7 @@ class ToiletsController < ApplicationController
     @toilets = Toilet.all
     respond_to do |format|
       format.mobile { render :template => 'toilets/mobile/index' }
+      format.json { render :json => @toilets.as_json }
       format.all
     end
   end
@@ -15,6 +16,7 @@ class ToiletsController < ApplicationController
     @reviews = @toilet.reviews.order('created_at desc').paginate(:page => params[:page], :per_page => 5)
     respond_to do |format|
       format.mobile { render :template => 'toilets/mobile/show' }
+      format.json { render :json => @toilet.as_json }
       format.all
     end
   end
